@@ -2,10 +2,10 @@ import React from 'react';
 
 import Directory from '../../components/directory/directory.jsx';
 
-import './homepage.scss';
+import './home.scss';
 
 const HomePage = () => (
-  <section className="homepage">
+  <section className="home-page">
     <Directory />
   </section>
 );

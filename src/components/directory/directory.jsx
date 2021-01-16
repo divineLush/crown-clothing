@@ -7,13 +7,7 @@ import sections from './directory-sections.js';
 import './directory.scss';
 
 class Directory extends React.Component {
-  constructor () {
-    super();
-
-    this.state = {
-      sections,
-    }
-  }
+  state = { sections }
 
   sectionsList = () => this.state.sections
     .map(({ ...sectionProps }, key) => (
