@@ -1,17 +1,14 @@
 import React from 'react';
 
+import CollectionItem from '../collection-item/collection-item.jsx';
+
 import './collection-preview.scss';
 
 const CollectionPreview = ({ title, items }) => {
   const itemsList = items
     .slice(0, 4)
-    .map((item, key) => (
-      <article
-        key={ key }
-        className="collection-preview__item"
-      >
-        { item.name }
-      </article>
+    .map(({ ...itemProps }, key) => (
+      <CollectionItem key={ key } { ...itemProps } />
     ));
 
   return (
