@@ -5,11 +5,11 @@ import SignUp from '../../components/sign-up/sign-up.jsx';
 
 import './sign-in.scss';
 
-const SignInSignUpPage = () => (
-  <section className="sign-in-sign-up-page">
+const SignInPage = () => (
+  <section className="sign-in-page">
     <SignIn />
     <SignUp />
   </section>
 );
 
-export default SignInSignUpPage;
+export default SignInPage;

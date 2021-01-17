@@ -19,7 +19,7 @@ const Header = ({ currentUser }) => {
     );
 
     const signIn = (
-      <Link className="header__nav-link" to="/signin">SIGN IN</Link>
+      <Link className="header__nav-link" to="/sign-in">SIGN IN</Link>
     );
 
     return currentUser ? signOut : signIn
