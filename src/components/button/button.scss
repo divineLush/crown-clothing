@@ -24,4 +24,16 @@
     transform: scale(1.1);
     box-shadow: 10px 10px;
   }
+
+  &._google-sign-in {
+    background-color: #4285f4;
+    color: white;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: white;
+      color: #4285f4;
+    }
+  }
 }

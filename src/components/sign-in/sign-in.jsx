@@ -51,8 +51,15 @@ class SignIn extends React.Component {
             handleChange={ this.handleChange }
             required
           />
-          <Button type="submit">Sign In</Button>
-          <Button onClick={ signInWithGoogle }>Sign in with Google</Button>
+          <section className="sign-in__form-btn-container">
+            <Button type="submit">Sign In</Button>
+            <Button
+              onClick={ signInWithGoogle }
+              modifier="google-sign-in"
+            >
+              Sign in with Google
+            </Button>
+          </section>
         </form>
       </section>
     );
