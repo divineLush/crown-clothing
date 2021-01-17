@@ -14,12 +14,14 @@
   border: none;
   cursor: pointer;
   transition: all .3s ease-out;
+  outline: none;
 
   &:hover,
   &:active,
   &:focus {
     background-color: white;
     color: black;
-    border: 1px solid black;
+    transform: scale(1.1);
+    box-shadow: 10px 10px;
   }
 }
