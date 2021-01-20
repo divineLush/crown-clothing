@@ -10,7 +10,7 @@ import CartDropdown from '../cart-dropdown/cart-dropdown.jsx';
 
 import './header.scss';
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, isHidden }) => {
   const signLink = (() => {
     const signOut = (
       <button
@@ -43,14 +43,17 @@ const Header = ({ currentUser }) => {
         { signLink }
         <CartButton />
       </nav>
-      <CartDropdown />
+      {
+        isHidden ? null : <CartDropdown />
+      }
     </header>
   );
 }
 
 // state is a rootReducer
-const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser,
+const mapStateToProps = ({ user: { currentUser }, cart: { isHidden } }) => ({
+  currentUser,
+  isHidden,
 });
 
 // first argument allows to acces state (rootReducer)
