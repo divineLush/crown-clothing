@@ -1,4 +1,4 @@
-.cart-icon {
+.cart-button {
   width: 45px;
   height: 45px;
   position: relative;
@@ -6,6 +6,8 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  border: none;
+  background-color: inherit;
 
   &__icon {
     width: 24px;
