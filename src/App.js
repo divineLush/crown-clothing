@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Header from './components/header/header.jsx';
@@ -44,6 +44,12 @@ class App extends React.Component {
   }
 
   render () {
+    const signInRender = () => this.props.currentUser ? (
+        <Redirect to="/" />
+      ) : (
+        <SignInPage />
+      );
+
     return (
       <section className="App">
         <Header />
@@ -51,13 +57,17 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={ HomePage } />
             <Route path="/shop" component={ ShopPage } />
-            <Route path="/sign-in" component={ SignInPage } />
+            <Route exact path="/sign-in" render={ signInRender } />
           </Switch>
         </main>
       </section>
     );
   }
 }
+
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser,
+});
 
 const mapDispatchToProps = dispatch => ({
   // prop name is whatever prop we want to pass
@@ -73,5 +83,4 @@ const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 });
 
-// the first argument is null as App doesn't need props from reducer
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
