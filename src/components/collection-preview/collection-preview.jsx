@@ -7,8 +7,8 @@ import './collection-preview.scss';
 const CollectionPreview = ({ title, items }) => {
   const itemsList = items
     .slice(0, 4)
-    .map(({ ...itemProps }, key) => (
-      <CollectionItem key={ key } { ...itemProps } />
+    .map((item, key) => (
+      <CollectionItem key={ key } item={ item } />
     ));
 
   return (
