@@ -7,27 +7,21 @@ import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg';
 
 import './cart-button.scss';
 
-const CartButton = ({ toggleCartHidden, cartItems }) => {
-  const itemsQuantity = cartItems.length
-    ? cartItems
-      .map(item => item.quantity)
-      .reduce((acc, curr) => acc + curr)
-    : 0;
-
-  return (
-    <button
-      className="cart-button"
-      title="Toggle cart dropdown"
-      onClick={ toggleCartHidden }
-    >
-      <ShoppingIcon className="cart-button__icon" />
-      <span className="cart-button__item-count">{ itemsQuantity }</span>
-    </button>
-  );
-}
+const CartButton = ({ toggleCartHidden, itemsCount }) => (
+  <button
+    className="cart-button"
+    title="Toggle cart dropdown"
+    onClick={ toggleCartHidden }
+  >
+    <ShoppingIcon className="cart-button__icon" />
+    <span className="cart-button__item-count">{ itemsCount }</span>
+  </button>
+);
 
 const mapStateToProps = ({ cart: { cartItems } }) => ({
-  cartItems,
+  // redux selector
+  itemsCount: cartItems
+    .reduce((acc, cartItem) => acc + cartItem.quantity, 0),
 });
 
 const mapDispatchToProps = dispatch => ({
