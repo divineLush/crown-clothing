@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import { auth } from '../../firebase/firebase.utils.js';
+
+import { selectCartHidden } from '../../redux/cart/cart.selector.js';
+import { selectCurrentUser } from '../../redux/user/user.selector.js';
 
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 import CartButton from '../cart-button/cart-button.jsx';
@@ -51,10 +55,15 @@ const Header = ({ currentUser, isHidden }) => {
 }
 
 // state is a rootReducer
-const mapStateToProps = ({ user: { currentUser }, cart: { isHidden } }) => ({
-  currentUser,
-  isHidden,
+// createStructuredSelector allows to avoid the dirty situation below
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+  isHidden: selectCartHidden,
 });
+// const mapStateToProps = state => ({
+//   currentUser: selectCurrentUser(state),
+//   isHidden: selectCartHidden(state),
+// });
 
 // first argument allows to acces state (rootReducer)
 export default connect(mapStateToProps)(Header);

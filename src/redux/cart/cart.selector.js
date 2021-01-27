@@ -14,6 +14,11 @@ export const selectCartItems = createSelector(
   cart => cart.cartItems,
 );
 
+export const selectCartHidden = createSelector(
+  [selectCart],
+  cart => cart.isHidden,
+);
+
 // cleaner approach
 // gives memoized selectors that cash values
 // better for performance as there is no need to rerender components
