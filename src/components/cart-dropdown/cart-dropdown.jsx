@@ -1,10 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { selectCartItems } from '../../redux/cart/cart.selector.js';
 
-import Button from '../button/button.jsx';
 import CartItem from '../cart-item/cart-item.jsx';
 
 import './cart-dropdown.scss';
@@ -14,12 +14,25 @@ const CartDropdown = ({ cartItems }) => {
     <CartItem key={ key } item={ item } />
   ));
 
+  const emptyMessage = (
+    <span className="cart-dropdown__empty-message">
+      Your cart is empty
+    </span>
+  );
+
+  const content = cartItems.length ? itemsList : emptyMessage;
+
   return (
     <section className="cart-dropdown">
       <div className="cart-dropdown__items">
-        { itemsList }
+        { content }
       </div>
-      <Button modifier="inverted">GO TO CHECKOUT</Button>
+      <Link
+        className="cart-dropdown__link"
+        to="/checkout"
+      >
+        GO TO CHECKOUT
+      </Link>
     </section>
   );
 }
