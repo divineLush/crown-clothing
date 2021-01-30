@@ -1,5 +1,7 @@
 import React from 'react';
 
+import CartTotal from '../../components/cart-total/cart-total.jsx';
+
 import './checkout.scss';
 
 const CheckoutPage = () => (
@@ -21,7 +23,7 @@ const CheckoutPage = () => (
         <span>Remove</span>
       </div>
       <div className="checkout-page__total">
-        <span>Total: $</span>
+        <CartTotal />
       </div>
     </header>
   </section>
