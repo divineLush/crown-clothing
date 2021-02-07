@@ -1,8 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { clearItemFromCart } from '../../redux/cart/cart.actions.js';
 
 import './checkout-item.scss';
 
-const CheckoutItem = ({ cartItem: { name, imageUrl, quantity, price } }) => {
+const CheckoutItem = ({ cartItem, clearItem }) => {
+  const { name, imageUrl, quantity, price } = cartItem;
   const btnTitle = `Remove ${name} from cart`;
 
   return (
@@ -16,9 +20,14 @@ const CheckoutItem = ({ cartItem: { name, imageUrl, quantity, price } }) => {
       <button
         className="checkout-item__remove-btn"
         title={ btnTitle }
+        onClick={ () => clearItem(cartItem) }
       >&#10005;</button>
     </article>
   );
 }
 
-export default CheckoutItem;
+const mapDispatchToProps = dispatch => ({
+  clearItem: item => dispatch(clearItemFromCart(item)),
+})
+
+export default connect(null, mapDispatchToProps)(CheckoutItem);
