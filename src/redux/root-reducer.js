@@ -4,6 +4,7 @@ import storage from 'redux-persist/lib/storage';
 
 import user from './user/user.reducer';
 import cart from './cart/cart.reducer.js';
+import directory from './directory/directory.reducer.js';
 
 const persistConfig = {
   // at what point inside reducer object do we want to storing everything
@@ -13,6 +14,6 @@ const persistConfig = {
   whitelist: ['cart'],
 };
 
-const rootReducer = combineReducers({ user, cart });
+const rootReducer = combineReducers({ user, cart, directory });
 
 export default persistReducer(persistConfig, rootReducer);
