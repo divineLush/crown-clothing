@@ -1,7 +1,5 @@
 import React from 'react';
 
-import CartTotal from '../../components/cart-total/cart-total.jsx';
-
 import '../../components/checkout-header/checkout-header.scss'
 
 const CheckoutHeader = ({ cartItems }) => {
@@ -15,9 +13,6 @@ const CheckoutHeader = ({ cartItems }) => {
   return (
     <header className="checkout-header">
       { blockList }
-      <div className="checkout-header__block">
-        <CartTotal />
-      </div>
     </header>
   );
 }
