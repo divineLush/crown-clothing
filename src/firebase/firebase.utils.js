@@ -40,6 +40,24 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
 firebase.initializeApp(config);
 
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+  const collectionRef = firestore.collection(collectionKey);
+
+  // only one .set() call at a time
+  // batch is a way to group calls together into one request
+  // makes code more predictable
+  const batch = firestore.batch();
+  // loop through array and batch calls together
+  objectsToAdd.forEach((obj) => {
+    // returns new reference and generates new id
+    const newDocRef = collectionRef.doc();
+    batch.set(newDocRef, obj);
+  });
+
+  // fires off batch request and returns promise
+  return await batch.commit();
+}
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
