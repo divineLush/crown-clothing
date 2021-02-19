@@ -1,9 +1,7 @@
-import SHOP_DATA from './shop.initial.js';
-
 import ShopActionTypes from './shop.types.js';
 
 const INITIAL_STATE = {
-  collections: SHOP_DATA
+  collections: null,
 };
 
 const shop = (state = INITIAL_STATE, { type, payload }) => {
